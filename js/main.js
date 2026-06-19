@@ -55,8 +55,44 @@
     els.forEach((el) => observer.observe(el));
   }
 
+  function initScrollProgress() {
+    const progress = document.querySelector(".reading-progress-bar");
+    if (!progress) return;
+
+    const updateProgress = () => {
+      const doc = document.documentElement;
+      const scrollTop = doc.scrollTop || document.body.scrollTop;
+      const scrollHeight = doc.scrollHeight - doc.clientHeight;
+      const percent = scrollHeight > 0 ? Math.min((scrollTop / scrollHeight) * 100, 100) : 0;
+
+      progress.style.width = scrollTop <= 1 ? "0%" : `${percent}%`;
+    };
+
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    updateProgress();
+  }
+
+  function initScrollToTop() {
+    const button = document.querySelector(".scroll-to-top");
+    if (!button) return;
+
+    const toggleVisibility = () => {
+      button.classList.toggle("visible", window.scrollY > 400);
+    };
+
+    button.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
+    toggleVisibility();
+  }
+
   initThemeToggle();
   initEmailLink();
   initFooterYear();
   initFadeIn();
+  initScrollProgress();
+  initScrollToTop();
 })();
