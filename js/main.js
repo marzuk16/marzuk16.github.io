@@ -55,6 +55,41 @@
     els.forEach((el) => observer.observe(el));
   }
 
+  function initActiveNav() {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sectionIds = ['about', 'projects', 'skills', 'contact'];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    if (!navLinks.length || !sections.length) return;
+
+    const updateActive = () => {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.35;
+      let currentId = sections[0].id;
+
+      sections.forEach((section, index) => {
+        const nextSection = sections[index + 1];
+        const isInSection = !nextSection
+          ? scrollPosition >= section.offsetTop
+          : scrollPosition >= section.offsetTop && scrollPosition < nextSection.offsetTop;
+
+        if (isInSection) {
+          currentId = section.id;
+        }
+      });
+
+      navLinks.forEach((link) => {
+        const isActive = link.getAttribute('href') === `#${currentId}`;
+        link.classList.toggle('active', isActive);
+      });
+    };
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('resize', updateActive);
+    updateActive();
+  }
+
   function initScrollProgress() {
     const progress = document.querySelector(".reading-progress-bar");
     if (!progress) return;
@@ -93,6 +128,7 @@
   initEmailLink();
   initFooterYear();
   initFadeIn();
+  initActiveNav();
   initScrollProgress();
   initScrollToTop();
 })();
