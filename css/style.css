@@ -538,6 +538,10 @@ strong { color: var(--color-text); }
   line-height: 1.5;
 }
 
+.pc-contributions li strong {
+  color: var(--color-text);
+}
+
 .pc-contributions li::before {
   content: '';
   display: block;
