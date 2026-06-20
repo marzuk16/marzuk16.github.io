@@ -124,6 +124,23 @@
     toggleVisibility();
   }
 
+  function initLocalTime() {
+    const el = document.querySelector("[data-local-time]");
+    if (!el) return;
+
+    const update = () => {
+      el.textContent = new Date().toLocaleTimeString("en-US", {
+        timeZone: "Asia/Dhaka",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      });
+    };
+
+    update();
+    setInterval(update, 60000);
+  }
+
   initThemeToggle();
   initEmailLink();
   initFooterYear();
@@ -131,4 +148,5 @@
   initActiveNav();
   initScrollProgress();
   initScrollToTop();
+  initLocalTime();
 })();
