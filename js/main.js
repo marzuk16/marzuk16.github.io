@@ -57,7 +57,7 @@
 
   function initActiveNav() {
     const navLinks = document.querySelectorAll('.nav-links a');
-    const sectionIds = ['about', 'projects', 'skills', 'contact'];
+    const sectionIds = ['about', 'projects', 'skills', 'education', 'contact'];
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter(Boolean);
@@ -65,7 +65,8 @@
     if (!navLinks.length || !sections.length) return;
 
     const updateActive = () => {
-      const scrollPosition = window.scrollY + window.innerHeight * 0.35;
+      const offset = Math.min(window.innerHeight * 0.35, 120);
+      const scrollPosition = window.scrollY + offset;
       let currentId = sections[0].id;
 
       sections.forEach((section, index) => {
@@ -78,6 +79,9 @@
           currentId = section.id;
         }
       });
+
+      const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10;
+      if (atBottom) currentId = sections[sections.length - 1].id;
 
       navLinks.forEach((link) => {
         const isActive = link.getAttribute('href') === `#${currentId}`;

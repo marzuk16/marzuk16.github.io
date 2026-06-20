@@ -661,6 +661,8 @@ strong { color: var(--color-text); }
 
 #projects .card-grid { grid-template-columns: 1fr; }
 
+#education .card-grid { grid-template-columns: 1fr; }
+
 .skills-grid { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
 
 /* --------------------------------- About -------------------------------- */
