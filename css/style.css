@@ -522,8 +522,8 @@ strong { color: var(--color-text); }
 
 .pc-contributions {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.6rem 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
   list-style: none;
   padding: 0;
   margin: 0;
