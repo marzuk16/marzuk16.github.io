@@ -545,6 +545,21 @@ strong { color: var(--color-text); }
   text-align: center;
 }
 
+.location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: var(--space-2);
+}
+
+.location-badge::before {
+  content: '📍';
+  font-size: 0.75rem;
+}
+
 .availability-badge {
   display: inline-flex;
   align-items: center;
