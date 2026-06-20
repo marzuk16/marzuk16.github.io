@@ -37,6 +37,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme" hidden>
@@ -61,7 +62,7 @@
           <p class="hero-kicker fade-in">Hi, I'm</p>
           <h1 class="fade-in">Md Marzukul Islam</h1>
           <p class="hero-title fade-in">Software Engineer</p>
-          <p class="hero-tagline fade-in">Backend engineer building scalable APIs, services, and production systems.</p>
+          <p class="hero-tagline fade-in">Java & Spring Boot engineer building scalable backend systems and APIs.</p>
           <p class="hero-pitch fade-in">
             Software Engineer with 5+ years of experience designing and scaling backend platforms,
             REST APIs, and microservices for high-traffic production environments.
@@ -70,7 +71,7 @@
           <div class="hero-actions fade-in">
             <a class="btn btn-primary" href="#projects">View Projects</a>
             <a class="btn" href="#contact">Contact Me</a>
-            <!-- TODO: Add resume PDF → <a class="btn" href="assets/resume.pdf" download>Download CV</a> -->
+            <a class="btn" href="assets/resume.pdf" download>Download CV</a>
           </div>
         </div>
       </div>
@@ -110,36 +111,58 @@
             <h3>Integrated Primary Educational Management Information System (IPEMIS)</h3>
             <a class="project-link" href="https://ipemis.dpe.gov.bd/?lang=en_EN" target="_blank" rel="noopener noreferrer">Site</a>
           </div>
-          <p class="card-meta">Backend Engineering · Education Management Platform</p>
+          <p class="card-meta">Backend Engineering · Education Management Platform · Government of Bangladesh</p>
           <p>
-            Contributed to a large-scale education information platform that supports
-            core administrative workflows and reporting. Focused on backend reliability,
-            secure access control, and performance for production use.
+            Backend engineer on a national-scale platform serving <strong>~900,000 users</strong> across
+            65,569 government primary schools and 375,012 teachers. Designed and maintained microservices
+            handling <strong>2,300+ requests/sec</strong> at peak, with high-availability architecture
+            deployed on Kubernetes. Implemented role-based access control via Spring Security, built
+            batch data pipelines with Spring Batch, and integrated real-time observability using
+            the ELK stack and Grafana to drive performance tuning in production.
           </p>
           <ul class="tag-list" aria-label="Technologies used">
             <li>Java</li><li>Spring Boot</li><li>Spring Batch</li><li>Spring Security</li>
-            <li>API Gateway</li><li>MVC</li><li>Thymeleaf</li><li>jQuery</li>
-            <li>Bootstrap</li><li>Microservices</li><li>Redis</li><li>Docker</li>
-            <li>Kubernetes</li><li>Kibana</li><li>Grafana</li><li>Jasper Reports</li>
-            <li>Oracle</li><li>Apache POI</li>
+            <li>API Gateway</li><li>Microservices</li><li>Redis</li><li>Oracle</li>
+            <li>Docker</li><li>Kubernetes</li><li>Kibana</li><li>Grafana</li>
+            <li>ELK Stack</li><li>Jasper Reports</li><li>Apache POI</li>
           </ul>
         </article>
 
         <article class="card fade-in">
           <div class="project-header">
-            <h3><a href="#" class="card-link">Establishment of Integrated Educational Information Management System (IEIMS)</a></h3>
-            <a class="project-link" href="#" target="_blank" rel="noopener noreferrer">Site</a>
+            <h3>Establishment of Integrated Educational Information Management System (IEIMS)</h3>
+            <a class="project-link" href="https://global.qa.ieims.org/sso/login" target="_blank" rel="noopener noreferrer">Site</a>
           </div>
-          <p class="card-meta">Backend Engineering · REST APIs</p>
+          <p class="card-meta">Backend Engineering · REST APIs · Education Sector</p>
           <p>
-            Built backend modules using Spring Boot and REST APIs with a focus on
-            scalability, maintainability, and production stability. Designed clean API
-            contracts and contributed to the system's long-term reliability under
-            continuous production load.
+            Built and owned backend REST API modules for a national education management system,
+            designing clean API contracts that remain stable under continuous production load.
+            Introduced Redis caching to reduce database pressure and improve response times for
+            frequently accessed data. Delivered containerized services via Docker with a focus on
+            maintainability and long-term production stability.
           </p>
           <ul class="tag-list" aria-label="Technologies used">
             <li>Java</li><li>Spring Boot</li><li>REST API</li><li>MSSQL</li>
-            <li>JasperSoft</li><li>Redis</li><li>Docker</li>
+            <li>Redis</li><li>Docker</li><li>JasperSoft</li>
+          </ul>
+        </article>
+
+        <article class="card fade-in">
+          <div class="project-header">
+            <h3>Automatic Attendance System</h3>
+            <a class="project-link" href="https://github.com/marzuk16/Automatic-Attendance-System" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+          <p class="card-meta">Personal Project · Full-Stack Web Application</p>
+          <p>
+            Built a real-time attendance management system for educational institutions with
+            role-based access for admins, teachers, and students. Implemented live attendance
+            updates using Socket.io, course and student management, an internal inbox system,
+            and a dashboard with attendance analytics. Backed by MongoDB with Mongoose ODM
+            and secured via session-based authentication.
+          </p>
+          <ul class="tag-list" aria-label="Technologies used">
+            <li>Node.js</li><li>Express.js</li><li>Socket.io</li><li>MongoDB</li>
+            <li>Mongoose</li><li>EJS</li><li>REST API</li><li>Authentication</li>
           </ul>
         </article>
 
@@ -150,33 +173,46 @@
       <h2 class="fade-in">Skills</h2>
       <div class="card-grid skills-grid">
         <div class="card fade-in">
-          <h3>Business &amp; Requirements</h3>
-          <ul class="tag-list">
-            <li>Requirement Analysis</li><li>Solution Design</li>
-            <li>Stakeholder Collaboration</li><li>API Design</li>
-          </ul>
-        </div>
-        <div class="card fade-in">
           <h3>Backend</h3>
           <ul class="tag-list">
-            <li>Spring Boot</li><li>Microservices</li>
-            <li>REST APIs</li><li>Spring Security</li>
-            <li>Redis</li><li>Database Design</li>
+            <li>Java</li><li>Spring Boot</li><li>Spring Security</li>
+            <li>Spring Batch</li><li>Microservices</li><li>REST APIs</li>
+            <li>API Gateway</li><li>Redis</li>
           </ul>
         </div>
         <div class="card fade-in">
-          <h3>Monitoring &amp; Optimization</h3>
+          <h3>Databases</h3>
+          <ul class="tag-list">
+            <li>Oracle</li><li>MSSQL</li><li>PostgreSQL</li>
+            <li>Redis</li><li>Database Design</li><li>Query Optimization</li>
+          </ul>
+        </div>
+        <div class="card fade-in">
+          <h3>DevOps &amp; Infrastructure</h3>
+          <ul class="tag-list">
+            <li>Docker</li><li>Kubernetes</li><li>Git</li>
+            <li>Maven</li><li>CI/CD</li><li>Linux</li>
+          </ul>
+        </div>
+        <div class="card fade-in">
+          <h3>Monitoring &amp; Observability</h3>
           <ul class="tag-list">
             <li>Kibana</li><li>Grafana</li><li>ELK Stack</li>
-            <li>Observability</li><li>Performance Tuning</li>
+            <li>Performance Tuning</li><li>Log Analysis</li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <section id="education" class="container section" aria-label="Education">
+      <h2 class="fade-in">Education</h2>
+      <div class="card-grid">
         <div class="card fade-in">
-          <h3>Mentoring &amp; Leadership</h3>
-          <ul class="tag-list">
-            <li>Code Reviews</li><li>Team Mentoring</li>
-            <li>Technical Guidance</li><li>Collaboration</li>
-          </ul>
+          <div class="project-header">
+            <h3>BSc in Computer Science &amp; Engineering</h3>
+            <span class="card-meta">2021</span>
+          </div>
+          <p class="card-meta">Stamford University Bangladesh</p>
         </div>
       </div>
     </section>
