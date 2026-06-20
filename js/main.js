@@ -124,6 +124,49 @@
     toggleVisibility();
   }
 
+  function initStatCountUp() {
+    const stats = document.querySelectorAll(".stat[data-count]");
+    if (!stats.length) return;
+
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+    const animateStat = (el) => {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || "";
+      const format = el.dataset.format === "comma";
+      const valueEl = el.querySelector(".stat-value");
+      if (!valueEl) return;
+
+      const duration = 1400;
+      const start = performance.now();
+
+      const tick = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const current = Math.round(easeOut(progress) * target);
+        const display = format ? current.toLocaleString() : current;
+        valueEl.textContent = display + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+
+      requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateStat(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    stats.forEach((el) => observer.observe(el));
+  }
+
   function initLocalTime() {
     const el = document.querySelector("[data-local-time]");
     if (!el) return;
@@ -149,4 +192,5 @@
   initScrollProgress();
   initScrollToTop();
   initLocalTime();
+  initStatCountUp();
 })();
