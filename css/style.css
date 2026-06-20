@@ -326,6 +326,15 @@ strong { color: var(--color-text); }
   color: var(--color-text);
 }
 
+.card-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  color: var(--color-accent);
+}
+
 .card-meta {
   color: var(--color-accent);
   font-size: 0.8rem;
