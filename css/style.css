@@ -468,6 +468,26 @@ strong { color: var(--color-text); }
 
 .card p { color: var(--color-text-muted); margin: 0; }
 
+.project-timeline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-2);
+}
+
+.project-timeline::before {
+  content: '';
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  flex-shrink: 0;
+}
+
 #projects .card-grid { grid-template-columns: 1fr; }
 
 .skills-grid { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
