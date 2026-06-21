@@ -480,8 +480,10 @@ strong { color: var(--color-text); }
 
 .pc-identity {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.85rem;
+  min-width: 0;
+  flex: 1;
 }
 
 .pc-icon {
@@ -500,6 +502,10 @@ strong { color: var(--color-text); }
 .pc-icon svg {
   width: 1.15rem;
   height: 1.15rem;
+}
+
+.pc-identity > div {
+  min-width: 0;
 }
 
 .pc-identity h3 {
@@ -522,6 +528,13 @@ strong { color: var(--color-text); }
 
 .pc-company a:hover {
   text-decoration: underline;
+}
+
+.pc-company-desc {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-style: italic;
 }
 
 .pc-date-badge {
