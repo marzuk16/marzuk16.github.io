@@ -4,6 +4,11 @@ name: Deploy portfolio to GitHub Pages
 # (Settings -> Secrets and variables -> Actions -> Variables). Valid values: ink | tech.
 # Changing the variable does NOT auto-deploy — re-run this workflow from the Actions
 # tab ("Run workflow") to publish the change.
+#
+# NOTE: Requires Pages Source = "GitHub Actions" (Settings -> Pages), not "Deploy
+# from a branch". Re-running on an unchanged commit does not always purge the Pages
+# CDN, so if a design switch doesn't appear live within a few minutes, push any
+# commit to main to force a fresh build.
 
 on:
   push:
