@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-design="ink">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,14 +14,24 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Apply saved theme before paint to avoid flash -->
+  <!-- Set active design + theme before paint to avoid flash -->
   <script>
     (function () {
-      var saved = localStorage.getItem('theme');
-      document.documentElement.dataset.theme = saved || 'dark';
+      // ACTIVE_DESIGN is the single source of truth for which design is live.
+      // The deploy workflow rewrites this line from the ACTIVE_DESIGN repo variable.
+      var ACTIVE_DESIGN = 'ink';
+
+      // Owner preview hatch: ?design=ink|tech renders the other design without
+      // publishing it. Ignored for any other value so visitors stay locked.
+      var preview = new URLSearchParams(location.search).get('design');
+      var design = (preview === 'ink' || preview === 'tech') ? preview : ACTIVE_DESIGN;
+      document.documentElement.dataset.design = design;
+
+      // Color theme (dark/light) stays user-controllable and persisted.
+      document.documentElement.dataset.theme = localStorage.getItem('theme') || 'dark';
     })();
   </script>
 </head>
@@ -76,6 +86,11 @@
       </div>
     </section>
 
+    <svg class="brush-divider container" viewBox="0 0 900 28" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,14 C150,4 300,22 450,13 C600,4 750,20 900,14" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M0,17 C120,10 280,20 440,15 C600,10 750,19 900,16" fill="none" stroke-width="0.9" stroke-linecap="round" opacity="0.45"/>
+    </svg>
+
     <div class="stats-strip container" aria-label="Career at a glance">
       <div class="stat fade-in" data-count="5" data-suffix="+">
         <span class="stat-value">5+</span>
@@ -94,6 +109,11 @@
         <span class="stat-label">Domain Modules</span>
       </div>
     </div>
+
+    <svg class="brush-divider container" viewBox="0 0 900 28" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,16 C180,6 360,24 540,14 C720,5 860,18 900,15" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M0,19 C140,12 320,22 500,16 C680,10 820,20 900,18" fill="none" stroke-width="0.9" stroke-linecap="round" opacity="0.45"/>
+    </svg>
 
     <section id="about" class="container section" aria-label="About">
       <h2 class="fade-in">About</h2>
@@ -118,6 +138,11 @@
         </p>
       </div>
     </section>
+
+    <svg class="brush-divider container" viewBox="0 0 900 28" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,13 C200,3 400,23 600,12 C750,4 870,19 900,14" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M0,16 C160,9 350,21 560,15 C730,9 860,18 900,17" fill="none" stroke-width="0.9" stroke-linecap="round" opacity="0.45"/>
+    </svg>
 
     <section id="projects" class="container section" aria-label="Projects">
       <h2 class="fade-in">Experience</h2>
@@ -197,7 +222,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
               </span>
               <div>
-                <h3>Backend Engineer</h3>
+                <h3>Full Stack Engineer</h3>
                 <p class="pc-company">IEIMS · <a href="https://global.qa.ieims.org/sso/login" target="_blank" rel="noopener noreferrer">global.qa.ieims.org</a></p>
               <p class="pc-company-desc">Integrated Education Information Management System — Bangladesh Bureau of Educational Information and Statistics (BANBEIS)</p>
               </div>
@@ -256,6 +281,11 @@
       </div>
     </section>
 
+    <svg class="brush-divider container" viewBox="0 0 900 28" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,15 C120,5 280,22 480,13 C650,5 800,20 900,14" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M0,18 C180,11 340,21 520,16 C700,10 840,19 900,17" fill="none" stroke-width="0.9" stroke-linecap="round" opacity="0.45"/>
+    </svg>
+
     <section id="skills" class="container section" aria-label="Skills">
       <h2 class="fade-in">Skills</h2>
       <div class="card-grid skills-grid">
@@ -297,6 +327,11 @@
       </div>
     </section>
 
+    <svg class="brush-divider container" viewBox="0 0 900 28" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,14 C160,4 320,23 500,13 C660,4 820,19 900,15" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M0,17 C200,10 380,22 560,15 C740,9 860,18 900,16" fill="none" stroke-width="0.9" stroke-linecap="round" opacity="0.45"/>
+    </svg>
+
     <section id="education" class="container section" aria-label="Education">
       <h2 class="fade-in">Education</h2>
       <div class="card-grid">
@@ -316,13 +351,18 @@
       </div>
     </section>
 
+    <svg class="brush-divider container" viewBox="0 0 900 28" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,15 C140,5 300,22 480,14 C640,6 800,20 900,15" fill="none" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M0,18 C170,11 360,21 540,16 C710,10 850,19 900,17" fill="none" stroke-width="0.9" stroke-linecap="round" opacity="0.45"/>
+    </svg>
+
     <section id="contact" class="container section contact-section" aria-label="Contact">
       <h2 class="fade-in">Get In Touch</h2>
       <div class="contact-header">
         <span class="availability-badge">Available for new opportunities</span>
         <span class="location-badge">Dhaka, Bangladesh · GMT+6 · <span data-local-time></span></span>
         <p class="contact-lead">
-          I'm always open to discussing backend engineering roles or interesting projects.
+          I'm always open to discussing full stack engineering roles or interesting projects.
           Feel free to reach out via any of the channels below.
         </p>
       </div>
