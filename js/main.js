@@ -20,22 +20,6 @@
     toggle.hidden = false;
   }
 
-  function initDesignToggle() {
-    const toggle = document.querySelector("[data-design-toggle]");
-    if (!toggle) return;
-
-    const saved = localStorage.getItem("design");
-    root.dataset.design = saved || "ink";
-
-    toggle.addEventListener("click", () => {
-      const next = root.dataset.design === "ink" ? "tech" : "ink";
-      root.dataset.design = next;
-      localStorage.setItem("design", next);
-    });
-
-    toggle.hidden = false;
-  }
-
   /** Assembles the address at runtime so plain-text scrapers miss it. */
   function initEmailLink() {
     const link = document.querySelector("[data-email]");
@@ -205,7 +189,6 @@
   }
 
   initThemeToggle();
-  initDesignToggle();
   initEmailLink();
   initFooterYear();
   initFadeIn();

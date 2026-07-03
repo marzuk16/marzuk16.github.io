@@ -25,15 +25,48 @@ favicon.svg
       "Assistant Software Engineer", Spring Boot era) and point its blog link here
       instead of the old `/portfolio` site.
 
+## Two designs, one active at a time
+
+The site ships two designs — **ink** (ink & wash) and **tech** (glassmorphism) —
+that share a single `index.html`. They differ only in CSS, gated by the
+`data-design` attribute, so all content is written once and appears in whichever
+design is live. Never fork content per design.
+
+- **Content** → edit the shared `index.html`.
+- **Look of a design** → edit its rules in `css/style.css` (`[data-design="ink"]`
+  / `[data-design="tech"]`).
+
+### Which design is live
+
+Controlled by the `ACTIVE_DESIGN` **repository variable** (Settings → Secrets and
+variables → Actions → **Variables**). Valid values: `ink` or `tech`. The deploy
+workflow reads it and bakes it into `index.html` at publish time.
+
+To switch the live design:
+
+1. Change `ACTIVE_DESIGN` to `ink` or `tech`.
+2. Actions tab → **Deploy portfolio to GitHub Pages** → **Run workflow**
+   (changing the variable does not auto-deploy).
+
+### Preview the other design without publishing
+
+Append `?design=tech` (or `?design=ink`) to any URL — locally or on the live site
+— to render that design just for you. Visitors without the param always see the
+active one; there is no visitor-facing switch.
+
 ## Deploying
 
-GitHub Pages serves the `main` branch root of this repo. Deploying is just:
+GitHub Pages deploys via **GitHub Actions** (`.github/workflows/deploy.yml`) on
+every push to `main`. A normal content change is just:
 
 ```bash
 git push
 ```
 
-(Repo Settings → Pages → Source: "Deploy from a branch", branch `main`, folder `/`.)
+One-time setup (already done if the site is live via Actions):
+
+- Repo Settings → Pages → Source: **GitHub Actions** (not "Deploy from a branch").
+- Create the `ACTIVE_DESIGN` repository variable (defaults to `ink` if unset).
 
 ## Conventions
 

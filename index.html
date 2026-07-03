@@ -17,13 +17,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Apply saved theme before paint to avoid flash -->
+  <!-- Set active design + theme before paint to avoid flash -->
   <script>
     (function () {
-      var t = localStorage.getItem('theme');
-      var d = localStorage.getItem('design');
-      document.documentElement.dataset.theme  = t || 'dark';
-      document.documentElement.dataset.design = d || 'ink';
+      // ACTIVE_DESIGN is the single source of truth for which design is live.
+      // The deploy workflow rewrites this line from the ACTIVE_DESIGN repo variable.
+      var ACTIVE_DESIGN = 'ink';
+
+      // Owner preview hatch: ?design=ink|tech renders the other design without
+      // publishing it. Ignored for any other value so visitors stay locked.
+      var preview = new URLSearchParams(location.search).get('design');
+      var design = (preview === 'ink' || preview === 'tech') ? preview : ACTIVE_DESIGN;
+      document.documentElement.dataset.design = design;
+
+      // Color theme (dark/light) stays user-controllable and persisted.
+      document.documentElement.dataset.theme = localStorage.getItem('theme') || 'dark';
     })();
   </script>
 </head>
@@ -42,12 +50,6 @@
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="design-toggle" type="button" data-design-toggle aria-label="Switch design" hidden>
-        <!-- shown in ink mode: switch to tech -->
-        <svg class="icon icon-grid" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-        <!-- shown in tech mode: switch to ink -->
-        <svg class="icon icon-brush" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1 1 2.48 1 3.5 1 1.96 0 3.5-1.54 3.5-3.5a3.003 3.003 0 0 0-2-2.54z"/></svg>
-      </button>
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme" hidden>
         <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
@@ -145,6 +147,37 @@
     <section id="projects" class="container section" aria-label="Projects">
       <h2 class="fade-in">Experience</h2>
       <div class="card-grid">
+
+        <article class="card project-card fade-in">
+          <div class="pc-header">
+            <div class="pc-identity">
+              <span class="pc-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </span>
+              <div>
+                <h3>Software Engineer</h3>
+                <p class="pc-company">EARN · <a href="https://www.earndyd.gov.bd/" target="_blank" rel="noopener noreferrer">earndyd.gov.bd</a></p>
+              <p class="pc-company-desc">Economic Acceleration and Resilience for NEET — Department of Youth Development (DYD), Bangladesh</p>
+              </div>
+            </div>
+            <span class="pc-date-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              May 2026 – Present
+            </span>
+          </div>
+          <p class="pc-contributions-label">Key Impact</p>
+          <ul class="pc-contributions">
+            <li>Built and shipped the public portal (Next.js + Umbraco CMS) serving citizen-facing content for the EARN programme</li>
+            <li>Designed and delivered multi-language UI (EN/BN) across the portal with full translation parity</li>
+            <li>Owned CI/CD pipeline configuration — Docker builds, Kubernetes Helm deployments</li>
+            <li>Analysed business requirements and translated them into REST API contracts and UI specifications</li>
+            <li>Containerized services with Docker and deployed to Kubernetes for production-grade availability</li>
+          </ul>
+          <ul class="tag-list" aria-label="Technologies used">
+            <li>Next.js</li><li>Docker</li><li>Kubernetes</li><li>Helm</li>
+            <li>CI/CD</li><li>REST API</li>
+          </ul>
+        </article>
 
         <article class="card project-card fade-in">
           <div class="pc-header">
