@@ -530,7 +530,9 @@ strong { color: var(--color-text); }
 
 #projects .card-grid  { grid-template-columns: 1fr; }
 #education .card-grid { grid-template-columns: 1fr; }
-.skills-grid { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+.skills-grid { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .skills-grid { grid-template-columns: 1fr; } }
 
 /* ----------------------------- Stats strip ----------------------------- */
 .stats-strip {
