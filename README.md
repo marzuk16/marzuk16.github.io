@@ -10,14 +10,13 @@ Live at: <https://marzuk16.github.io>
 index.html      # all page content
 css/style.css   # design tokens (light/dark via light-dark()) + components
 js/main.js      # progressive enhancements: theme toggle, email link, footer year
-assets/         # resume.pdf and any project images
+assets/         # Md-Marzukul-Islam-CV.pdf and any project images
 favicon.svg
 ```
 
 ## Before going live — content checklist
 
-- [ ] Replace `assets/resume.pdf` — the current file is the **2021 student-era CV**
-      copied from the old portfolio repo; export an updated one.
+- [x] Replace the CV PDF — now `assets/Md-Marzukul-Islam-CV.pdf` (v4.0, Nov 2026).
 - [ ] Verify the IPEMIS tech-tag list in `index.html` (search for `TODO`).
 - [ ] Confirm employment/NDA terms allow naming EIMS/LGED and IPEMIS/DPE publicly;
       soften the case-study wording if not.
